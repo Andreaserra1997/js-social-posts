@@ -98,8 +98,9 @@ function renderPost() {
     };
 };
 
-
+const likedPosts = [];
 const likeButton = document.querySelectorAll('.like-button');
+const likeCounter = document.querySelectorAll('.js-likes-counter');
 
 for (let i = 0; i < likeButton.length; i++) {
     likeButton[i].addEventListener('click', 
@@ -107,3 +108,18 @@ for (let i = 0; i < likeButton.length; i++) {
         this.classList.toggle('like-button--liked');
     });
 };
+
+likeButton.forEach((eleLike, i) => {
+    eleLike.addEventListener("click", function () {
+        const likeCounters = likeCounter[i];
+    
+        if (eleLike.classList.contains("like-button--liked")) {
+          posts[i].likes += 1;
+          likedPosts.pop(`${posts[i].id}`);
+        } else {
+          posts[i].likes -= 1;
+          likedPosts.push(`${posts[i].id}`);
+        }
+        likeCounters.innerHTML = `${posts[i].likes}`;
+    });
+});
