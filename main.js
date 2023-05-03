@@ -83,7 +83,7 @@ function renderPost() {
             <div class="post__footer">
                 <div class="likes js-likes">
                     <div class="likes__cta">
-                        <a class="like-button  js-like-button" href="#" data-postid="1">
+                        <a class="like-button  js-like-button" data-postid="1">
                             <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                             <span class="like-button__label">Mi Piace</span>
                         </a>
@@ -99,16 +99,11 @@ function renderPost() {
 };
 
 
-const likeButton = document.querySelectorAll('.like-button')
+const likeButton = document.querySelectorAll('.like-button');
 
-likeButton.addEventListener('click', buttonColor)
-
-let activeIndex = 0;
-function buttonColor() {
-    likeButton[activeIndex].classList.remove('like-button--liked');
-    activeIndex++;
-    if (activeIndex >= likeButton.length) {
-        activeIndex = 0;
-    };
-    likeButton[activeIndex].classList.add('like-button--liked');
+for (let i = 0; i < likeButton.length; i++) {
+    likeButton[i].addEventListener('click', 
+    function() {
+        this.classList.toggle('like-button--liked');
+    });
 };
