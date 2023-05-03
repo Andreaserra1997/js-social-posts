@@ -97,3 +97,18 @@ function renderPost() {
         `
     };
 };
+
+
+const likeButton = document.querySelectorAll('.like-button')
+
+likeButton.addEventListener('click', buttonColor)
+
+let activeIndex = 0;
+function buttonColor() {
+    likeButton[activeIndex].classList.remove('like-button--liked');
+    activeIndex++;
+    if (activeIndex >= likeButton.length) {
+        activeIndex = 0;
+    };
+    likeButton[activeIndex].classList.add('like-button--liked');
+};
