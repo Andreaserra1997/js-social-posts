@@ -72,7 +72,7 @@ function renderPost() {
                     </div>
                     <div class="post-meta__data">
                         <div class="post-meta__author">${posts[i].author.name}</div>
-                        <div class="post-meta__time">${posts[i].created}</div>
+                        <div class="post-meta__time">${formatToItalianDate(posts[i].created)}</div>
                     </div>                    
                 </div>
             </div>
@@ -123,3 +123,7 @@ likeButton.forEach((eleLike, i) => {
         likeCounters.innerHTML = `${posts[i].likes}`;
     });
 });
+
+function formatToItalianDate (isoString) {
+    return isoString.split('-').reverse().join('/')
+}
